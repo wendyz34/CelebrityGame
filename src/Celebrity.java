@@ -60,6 +60,6 @@ public class Celebrity {
      */
     @Override
     public String toString(){
-        return "The Celebrity's name is: " + answer + "The clue for this clecbrity is: " + clue;
+        return "The Celebrity's name is: " + answer + "The clue for this celebrity is: " + clue;
     }
 }
