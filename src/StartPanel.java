@@ -194,7 +194,8 @@ public class StartPanel extends JPanel implements ActionListener {
      * Used to link all Listeners to the associated GUI components.
      */
     private void setupListeners() {
-
+       addCelebrityButton.addActionListener(this);
+       startButton.addActionListener(this);
     }
 
 
@@ -237,5 +238,27 @@ public class StartPanel extends JPanel implements ActionListener {
         clueField.setText("");
         controller.addCelebrity(answer, clue, type);
         startButton.setEnabled(true);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        Object button  = e.getSource();
+        JButton click = (JButton)button;
+        String text = click.getText();
+
+        if(text.equals("Add current celebrity")) {
+            // when "add celebrity" button gets clicked:
+            answerField.setBackground(Color.WHITE);
+            clueField.setBackground(Color.WHITE);
+            if (validate(answerField.getText(), clueField.getText())) {
+                addToGame();
+            } else {
+                invalidInput();
+            }
+            celebrityCount = controller.getCelebrityGameSize();
+            celebrityCountLabel.setText(countLabelText + celebrityCount);
+        }else if(text.equals("Start Celebrity game")){
+            controller.play();
+        }
     }
 }

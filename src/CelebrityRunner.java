@@ -11,8 +11,8 @@ public class CelebrityRunner {
     public static void main(String [] args) {
         CelebrityGame game = new CelebrityGame();
 
-        Celebrity cel = new Celebrity("Big Bird", "From Sesame Street, covered in yellow feathers");
-        System.out.println(cel); // test toString
+       /* Celebrity cel = new Celebrity("Big Bird", "From Sesame Street, covered in yellow feathers");
+        System.out.println(cel); */// test toString
 
 
 

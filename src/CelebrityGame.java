@@ -46,12 +46,17 @@ public class CelebrityGame {
         return false; // stub
     }
 
+
     /**
      * Asserts that the list is initialized and contains at least one Celebrity.
      * Sets the current celebrity as the first item in the list. Opens the game
      * play screen.
      */
     public void play() {
+      if(celebGameList!=null&&celebGameList.size()>0){
+          gameCelebrity = celebGameList.get(0);
+          gameWindow.replaceScreen("GAME");
+      }
 
     }
 
@@ -63,6 +68,8 @@ public class CelebrityGame {
      * @param type  What type of celebrity
      */
     public void addCelebrity(String name, String clue, String type) {
+        Celebrity newC = new Celebrity(name, clue);
+        celebGameList.add(newC);
 
     }
 
@@ -72,6 +79,9 @@ public class CelebrityGame {
      * @return If the supplied Celebrity is valid
      */
     public boolean validateCelebrity(String name) {
+        if(name.trim().length()>=4){
+            return true;
+        }
         return false; // stub
     }
 
@@ -82,7 +92,9 @@ public class CelebrityGame {
      * @return If the clue is valid.
      */
     public boolean validateClue(String clue, String type) {
-        return false; // stub
+        String c = clue.trim();
+        return c.length()>=10;
+
     }
 
     /**
@@ -91,7 +103,7 @@ public class CelebrityGame {
      * @return Remaining number of celebrities
      */
     public int getCelebrityGameSize() {
-        return 0;  // stub
+        return celebGameList.size();  // stub
     }
 
     /**
@@ -101,7 +113,7 @@ public class CelebrityGame {
      * @return The String clue from the current celebrity.
      */
     public String sendClue() {
-        return null; // stub
+        return gameCelebrity.getClue(); // stub
     }
 }
 
