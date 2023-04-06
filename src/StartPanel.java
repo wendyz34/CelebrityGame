@@ -122,7 +122,7 @@ public class StartPanel extends JPanel implements ActionListener {
     }
 
     //interface method: gets called whenever a compotent with ActionListener attached gets clicked
-    public void actionPerformed(ActionEvent ae){
+   /* public void actionPerformed(ActionEvent ae){
         // when "add celebrity" button gets clicked:
         answerField.setBackground(Color.WHITE);
         clueField.setBackground(Color.WHITE);
@@ -135,7 +135,7 @@ public class StartPanel extends JPanel implements ActionListener {
         celebrityCountLabel.setText(countLabelText + celebrityCount);
 
 
-    }
+    }*/
 
 
     /**
@@ -241,8 +241,8 @@ public class StartPanel extends JPanel implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-        Object button  = e.getSource();
+    public void actionPerformed(ActionEvent ae) {
+        Object button  = ae.getSource();
         JButton click = (JButton)button;
         String text = click.getText();
 

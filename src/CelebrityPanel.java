@@ -117,8 +117,18 @@ public class CelebrityPanel extends JPanel implements ActionListener {
 
 
     }
-    public void actionPerformed(ActionEvent e){
+    public void setupListeners(){
+        guessButton.addActionListener(this);
 
+    }
+    @Override
+    public void actionPerformed(ActionEvent ae){
+        Object source = ae.getSource();
+        JButton clickedButton = (JButton)source;
+        String buttonText = clickedButton.getText();
+        if(buttonText.equals("Submit guess")){
+            System.out.println("SUBMIT GUESS PRESSED!");
+        }
     }
 
     /**
@@ -189,9 +199,6 @@ public class CelebrityPanel extends JPanel implements ActionListener {
     /*
      * Attaches listeners to the GUI components of the program
      */
-    private void setupListeners() {
-
-    }
 
     /**
      * Helper method for when the ActionListener attached to the timer fires.
@@ -220,6 +227,20 @@ public class CelebrityPanel extends JPanel implements ActionListener {
     private void updateScreen() {
         String text = guessField.getText();
         clueArea.append(text + "\nYou guessed: ");
+        if(controller.processGuess(text)){
+            clueArea.setBackground(Color.CYAN);
+            clueArea.append(success);
+            clueArea.append(controller.sendClue());
+        }else{
+            clueArea.setBackground(Color.WHITE);
+            clueArea.append(tryAgain);
+            clueArea.append(controller.sendClue());
+        }
+        if(controller.getCelebrityGameSize() == 0){
+            clueArea.append("\nNo more celebrities to guess.");
+            guessButton.setEnabled(false);
+            guessField.setEnabled(false);
+        }
 
 
 
